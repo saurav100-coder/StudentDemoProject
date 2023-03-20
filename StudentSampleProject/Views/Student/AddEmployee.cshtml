@@ -1,0 +1,42 @@
+﻿@model StudentSampleProject.Models.StudentModel
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Student</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="City"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Department"></label>
+            <input asp-for="Department" class="form-control" />
+            <span asp-validation-for="Department" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Gender" class="control-label"></label>    
+                <select asp-for="Gender" class="form-control">    
+                    <option value="">-- Select Gender --</option>    
+                    <option value="Male">Male</option>    
+                    <option value="Female">Female</option>    
+                </select> 
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" asp-controller="Student" asp-action="AddEmployee" style="width:150px">Create</button>
+        &nbsp;
+        <a asp-controller="Student" asp-action="GetAllStudents" class="btn btn-secondary" style="width:150px">Back to List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

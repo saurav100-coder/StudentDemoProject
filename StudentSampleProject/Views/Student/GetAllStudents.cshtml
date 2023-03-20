@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StudentSampleProject.Models.StudentModel>
+
+<div class="container p-3">
+    <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Index For Category</h2>
+            </div>
+            <div class="col-6 text-end">
+            <a asp-controller="Student" class="btn btn-primary" asp-action="AddEmployee">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Create New Category
+            </a>    
+        </div>
+    </div>
+<table class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Student" asp-action="EditStudentDetails" asp-route-id="@item.StudId" class="btn btn-secondary">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@item.StudId" class="btn btn-danger">
+                                <i class="bi bi-trash3"></i>
+                            </a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
